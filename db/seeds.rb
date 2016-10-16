@@ -25,23 +25,20 @@ users = User.create! [
 ]
 
 profiles = Profile.create! [
-    {gender: "Female", birth_year: 1954, first_name: "Carly", last_name: "Fiorina"},
-    {gender: "Male", birth_year: 1946, first_name: "Donald", last_name: "Trump"},
-    {gender: "Male", birth_year: 1951, first_name: "Ben", last_name: "Carson"},
-    {gender: "Female", birth_year: 1947, first_name: "Hillary", last_name: "Clinton"}
+    {gender: "female", birth_year: 1954, first_name: "Carly", last_name: "Fiorina"},
+    {gender: "male", birth_year: 1946, first_name: "Donald", last_name: "Trump"},
+    {gender: "male", birth_year: 1951, first_name: "Ben", last_name: "Carson"},
+    {gender: "female", birth_year: 1947, first_name: "Hillary", last_name: "Clinton"}
 ]
 
-profiles_tab = Profile.all.to_a
+i = 0
 
-# User.all.each do |user|
-#      v = profiles_tab.shift
-#     user.profile = profiles_tab.shift
-#   end
-id = User.first.id
-while (id){
-	user.find(id).profile << profiles_tab.shift
-	id += 1 
-}
+while (i < users.length)
+	users[i].profile = profiles[i]
+	i = i + 1
+end
+
+
 
 todolists = TodoList.create! [
     {list_name: "Carly's list", list_due_date: Date.today + 1.year},
@@ -89,14 +86,27 @@ ti_user4 = TodoItem.create! [
     {due_date: Date.today + 1.year,title: "Bash", description: "Of course", completed: false}
 ]
 
-ti_user5 = TodoItem.create! [
-    {due_date: Date.today - 5.year,title: "FD", description: "n°1", completed: true},
-    {due_date: Date.today - 1.year,title: "MN", description: "n°2", completed: true},
-    {due_date: Date.today - 7.year,title: "NL", description: "n°5", completed: true},
-    {due_date: Date.today - 4.year,title: "NN", description: "n°4", completed: true},
-    {due_date: Date.today + 1.year,title: "CK", description: "n°3", completed: false}
-]
 
+
+todo_items_all = TodoItem.all.to_a
+
+TodoList.all.each do |td_list|
+	j = 0
+    while j < 5
+    	td_list.todo_items << todo_items_all.shift
+    	j = j + 1
+    end
+end
+# i = 0
+
+# while (i < todolists.length)
+# 	j = 0
+#     while (j < 5)
+#     	todolists[i].todo_items << todo_items_all.shift
+#     	j = j + 1
+#     end
+#     i = i + 1
+# end
 
 
 

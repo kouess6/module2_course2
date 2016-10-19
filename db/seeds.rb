@@ -63,10 +63,10 @@ ti_user1 = TodoItem.create! [
 ]
 
 ti_user2 = TodoItem.create! [
-    {due_date: Date.today - 23.year,title: "Houphouet", description: "First president", completed: true},
-    {due_date: Date.today - 5.year,title: "Gbagbo", description: "In jail", completed: false},
-    {due_date: Date.today + 4.year,title: "Ado", description: "The actual one", completed: true},
-    {due_date: Date.today - 30.year,title: "Sankara", description: "The fighter", completed: false},
+    {due_date: Date.today + 1.year,title: "Houphouet", description: "First president", completed: true},
+    {due_date: Date.today + 1.year,title: "Gbagbo", description: "In jail", completed: false},
+    {due_date: Date.today + 1.year,title: "Ado", description: "The actual one", completed: true},
+    {due_date: Date.today + 1.year,title: "Sankara", description: "The fighter", completed: false},
     {due_date: Date.today + 1.year,title: "Bedie", description: "The pacifist", completed: false}
 ]
 

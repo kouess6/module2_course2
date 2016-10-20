@@ -1,27 +1,28 @@
 class Profile < ActiveRecord::Base
-  belongs_to :user
-  validates :first_name, :last_name, presence: true
-  
-  validate :validate_gender
-
-    def validate_gender
-    	validates :gender, inclusion: { in: %w(male female),
-    message: "Gender has not the right value" }
-    end
-validate :lastname_xor_firstname
-
-  private
-
+    belongs_to :user
+    
+    validate :lastname_xor_firstname
     def lastname_xor_firstname
-      unless last_name.blank? ^ first_name.blank?
-        errors.add(:base, "Specify a last_name or a first_name, not both")
-      end
+      if last_name.blank? and first_name.blank?
+        errors.add :base, "Error message"
+      end    
     end
 
-  # validates :first_name, allow_nil: true , if: "last_name.present?"
-  #validates  :last_name, presence: true, 
-  #			 if: :first_name, allow_blank: true
-  #validates_presence_of :mobile_number, :unless => :home_phone?
-  #validates :first_name, presence: false, :last_name, presence: true 
-  #validates :last_name, presence: true, if: "last_name.nil?"
+  validates :gender, inclusion: { in: %w(male female),
+      message: "Gender has not the right value" }
+
+  validate :firstname_sue
+  def firstname_sue
+    if gender == "male" and first_name == "Sue"
+      errors.add :base, "Error message"
+    end
+  end
+
+  def self.get_all_profiles min, max
+    min = 1940
+    max = 1951
+    self.where("birth_year BETWEEN :min_year AND :max_year", min_year: min, max_year: max).order(:birth_year)
+  end
+
 end
+# Profile.get_all_profiles

@@ -56,7 +56,7 @@ User.all.each do |user|
 
 ti_user1 = TodoItem.create! [
     {due_date: Date.today + 1.year,title: "Djokovic", description: "n°1 tennis men", completed: false},
-    {due_date: Date.today + 1.year,title: "Nadal", description: "n°10 tennis men", completed: false},
+    {due_date: Date.today + 1.year,title: "Nadal", description: "n°10 tennis men", completed: true},
     {due_date: Date.today + 1.year,title: "Federer", description: "n°5 tennis men", completed: true},
     {due_date: Date.today + 1.year,title: "Wawrinka", description: "n°3 tennis men", completed: true},
     {due_date: Date.today + 1.year,title: "Raonic", description: "n°7 tennis men", completed: false}
